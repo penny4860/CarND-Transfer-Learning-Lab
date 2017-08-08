@@ -10,13 +10,13 @@ FLAGS = flags.FLAGS
 
 # command line flags
 flags.DEFINE_string('training_file',
-                    'resnet_cifar10_100_bottleneck_features_train.p',
+                    'resnet_traffic_100_bottleneck_features_train.p',
                     "Bottleneck features training file (.p)")
 flags.DEFINE_string('validation_file',
-                    'resnet_cifar10_bottleneck_features_validation.p',
+                    'resnet_traffic_bottleneck_features_validation.p',
                     "Bottleneck features validation file (.p)")
 flags.DEFINE_integer('epochs',
-                    50,
+                    5,
                     "number of epoches")
 flags.DEFINE_integer('batch_size',
                     32,
@@ -75,11 +75,25 @@ if __name__ == '__main__':
     from keras.datasets import cifar10
     from sklearn.model_selection import train_test_split
     
-    
+    tf.app.run()
+
+
+    # 1) cifar10
     # VGG : loss: 0.0308 - acc: 1.0000 - val_loss: 0.9029 - val_acc: 0.7463
     # Inceltion : loss: 0.0129 - acc: 1.0000 - val_loss: 1.1957 - val_acc: 0.6625
     # resnet : loss: 0.0102 - acc: 1.0000 - val_loss: 0.8966 - val_acc: 0.7361
-    tf.app.run()
+
+    # 2) Traffic Sign
+    # VGG
+    # Epoch 50/50
+    # 4300/4300 [==============================] - 0s - loss: 0.0873 - acc: 0.9958 - val_loss: 0.4368 - val_acc: 0.8666
+    # Inception
+    # Epoch 50/50
+    # 4300/4300 [==============================] - 0s - loss: 0.0276 - acc: 1.0000 - val_loss: 0.8378 - val_acc: 0.7519
+    # ResNet
+    # Epoch 50/50
+    # 4300/4300 [==============================] - 0s - loss: 0.0332 - acc: 1.0000 - val_loss: 0.6146 - val_acc: 0.8108
+
 
 
 

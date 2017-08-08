@@ -10,13 +10,13 @@ FLAGS = flags.FLAGS
 
 # command line flags
 flags.DEFINE_string('training_file',
-                    'resnet_traffic_100_bottleneck_features_train.p',
+                    'vgg_cifar10_100_bottleneck_features_train.p',
                     "Bottleneck features training file (.p)")
 flags.DEFINE_string('validation_file',
-                    'resnet_traffic_bottleneck_features_validation.p',
+                    'vgg_cifar10_bottleneck_features_validation.p',
                     "Bottleneck features validation file (.p)")
 flags.DEFINE_integer('epochs',
-                    5,
+                    1,
                     "number of epoches")
 flags.DEFINE_integer('batch_size',
                     32,
@@ -79,11 +79,15 @@ if __name__ == '__main__':
 
 
     # 1) cifar10
+    # Train on 1000 samples, validate on 10000 samples
+    # 100 samples * 10 classes = 1000 training samples
     # VGG : loss: 0.0308 - acc: 1.0000 - val_loss: 0.9029 - val_acc: 0.7463
     # Inceltion : loss: 0.0129 - acc: 1.0000 - val_loss: 1.1957 - val_acc: 0.6625
     # resnet : loss: 0.0102 - acc: 1.0000 - val_loss: 0.8966 - val_acc: 0.7361
 
     # 2) Traffic Sign
+    # Train on 4300 samples, validate on 12939 samples
+    # 100 samples * 43 classes = 4300 training samples
     # VGG
     # Epoch 50/50
     # 4300/4300 [==============================] - 0s - loss: 0.0873 - acc: 0.9958 - val_loss: 0.4368 - val_acc: 0.8666
